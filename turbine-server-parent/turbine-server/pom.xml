@@ -49,13 +49,22 @@
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-hystrix-dashboard</artifactId>
+			<artifactId>spring-cloud-starter-turbine</artifactId>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-turbine</artifactId>
+			<artifactId>spring-cloud-starter-hystrix-dashboard</artifactId>
 		</dependency>
+
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.cloud</groupId>-->
+			<!--<artifactId>spring-cloud-starter-turbine-stream</artifactId>-->
+		<!--</dependency>-->
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.cloud</groupId>-->
+			<!--<artifactId>spring-cloud-starter-stream-rabbit</artifactId>-->
+		<!--</dependency>-->
 	</dependencies>
 
 	<profiles>
@@ -66,14 +75,14 @@
 			</activation>
 			<properties>
 				<config.url>http://10.52.180.29/config-service/</config.url>
-				<server.jar.name>dev-zuul-server</server.jar.name>
+				<server.jar.name>dev-turbine-server</server.jar.name>
 			</properties>
 		</profile>
 		<profile>
 			<id>qa-turbine-server</id>
 			<properties>
 				<config.url>http://10.52.180.29/config-service/</config.url>
-				<server.jar.name>qa-zuul-server</server.jar.name>
+				<server.jar.name>qa-turbine-server</server.jar.name>
 			</properties>
 		</profile>
 	</profiles>
