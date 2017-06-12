@@ -14,6 +14,12 @@
 	
 	<packaging>jar</packaging>
 
+	<properties>
+		<server.jar.name>security-server-${parent.version}</server.jar.name>
+		<executable.jar.postfix>exec</executable.jar.postfix>
+		<executable.server.jar.name>${server.jar.name}-${executable.jar.postfix}</executable.server.jar.name>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<!-- Setup Spring Boot -->
@@ -48,30 +54,16 @@
         </dependency>
 
 		<dependency>
+			<groupId>net.logstash.logback</groupId>
+			<artifactId>logstash-logback-encoder</artifactId>
+			<version>4.9</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-config</artifactId>
 		</dependency>
 	</dependencies>
-
-	<profiles>
-		<profile>
-			<id>dev-turbine-server</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<properties>
-				<config.url>http://10.52.180.29/config-service/</config.url>
-				<server.jar.name>dev-turbine-server</server.jar.name>
-			</properties>
-		</profile>
-		<profile>
-			<id>qa-turbine-server</id>
-			<properties>
-				<config.url>http://10.52.180.29/config-service/</config.url>
-				<server.jar.name>qa-turbine-server</server.jar.name>
-			</properties>
-		</profile>
-	</profiles>
 
 	<build>
 		<finalName>${server.jar.name}</finalName>
@@ -96,7 +88,10 @@
 				</configuration>
 				<executions>
 					<execution>
-						<id>build-turbine-server-zip</id>
+						<id>build-security-server-zip</id>
+						<configuration>
+							<appendAssemblyId>true</appendAssemblyId>
+						</configuration>
 						<phase>verify</phase>
 						<goals>
 							<goal>single</goal>
@@ -137,6 +132,9 @@
 						<goals>
 							<goal>repackage</goal>
 						</goals>
+						<configuration>
+							<classifier>${executable.jar.postfix}</classifier>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>
