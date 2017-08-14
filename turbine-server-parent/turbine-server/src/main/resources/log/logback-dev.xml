@@ -10,31 +10,31 @@ See here for more details: http://gordondickens.com/wordpress/2013/03/27/sawing-
     <!-- To enable JMX Management -->
     <jmxConfigurator/>
 
-    <appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-        <destination>10.52.180.37:5010</destination>
-        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
-            <providers>
-                <mdc/> <!-- MDC variables on the Thread will be written as JSON fields-->
-                <context/> <!--Outputs entries from logback's context -->
-                <version/> <!-- Logstash json format version, the @version field in the output-->
-                <logLevel/>
-                <loggerName/>
-                <pattern>
-                    <pattern> <!-- we can add some custom fields to be sent with all the log entries.-->
-                        {      <!--make filtering easier in Logstash-->
-                        "appName": "security-server",<!--or searching with Kibana-->
-                        "appVersion": "1.0"
-                        }
-                    </pattern>
-                </pattern>
-                <threadName/>
-                <message/>
-                <logstashMarkers/> <!-- Useful so we can add extra information for specific log lines as Markers-->
-                <arguments/> <!--or through StructuredArguments-->
-                <stackTrace/>
-            </providers>
-        </encoder>
-    </appender>
+    <!--<appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">-->
+        <!--<destination>10.52.180.37:5010</destination>-->
+        <!--<encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">-->
+            <!--<providers>-->
+                <!--<mdc/> &lt;!&ndash; MDC variables on the Thread will be written as JSON fields&ndash;&gt;-->
+                <!--<context/> &lt;!&ndash;Outputs entries from logback's context &ndash;&gt;-->
+                <!--<version/> &lt;!&ndash; Logstash json format version, the @version field in the output&ndash;&gt;-->
+                <!--<logLevel/>-->
+                <!--<loggerName/>-->
+                <!--<pattern>-->
+                    <!--<pattern> &lt;!&ndash; we can add some custom fields to be sent with all the log entries.&ndash;&gt;-->
+                        <!--{      &lt;!&ndash;make filtering easier in Logstash&ndash;&gt;-->
+                        <!--"appName": "security-server",&lt;!&ndash;or searching with Kibana&ndash;&gt;-->
+                        <!--"appVersion": "1.0"-->
+                        <!--}-->
+                    <!--</pattern>-->
+                <!--</pattern>-->
+                <!--<threadName/>-->
+                <!--<message/>-->
+                <!--<logstashMarkers/> &lt;!&ndash; Useful so we can add extra information for specific log lines as Markers&ndash;&gt;-->
+                <!--<arguments/> &lt;!&ndash;or through StructuredArguments&ndash;&gt;-->
+                <!--<stackTrace/>-->
+            <!--</providers>-->
+        <!--</encoder>-->
+    <!--</appender>-->
 
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
@@ -53,6 +53,6 @@ See here for more details: http://gordondickens.com/wordpress/2013/03/27/sawing-
 
     <root level="info">
         <appender-ref ref="console"/>
-        <appender-ref ref="logstash"/>
+        <!--<appender-ref ref="logstash"/>-->
     </root>
 </configuration>
