@@ -5,7 +5,7 @@ ENV JAVA_HOME              /usr/lib/jvm/java-8-openjdk-amd64
 ENV JAVA_OPTS              ""
 ENV PATH                   $PATH:$JAVA_HOME/bin
 
-ENV SPRING_PROFILES_ACTIVE test
+ENV SPRING_PROFILES_ACTIVE prod
 ENV SERVER_PORT 1114
 
 WORKDIR /app
