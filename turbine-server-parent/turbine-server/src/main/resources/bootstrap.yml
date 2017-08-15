@@ -56,7 +56,7 @@ spring:
   profiles: prod
   cloud:
     config:
-      uri: http://config-server:1111/config-service/
+      uri: http://ae906e7b1818c11e7877b06314d28740-340622028.us-west-2.elb.amazonaws.com/config-service/
 logging:
   config: classpath:log/logback-prod.xml
 
