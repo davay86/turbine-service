@@ -26,7 +26,7 @@ spring:
   profiles: dev
   cloud:
     config:
-      uri: http://10.52.180.29/config-service/
+      uri: http://10.52.180.29/config-api/
 logging:
   config: classpath:logback.xml
 
@@ -36,7 +36,7 @@ spring:
     profiles: test
     cloud:
       config:
-        uri: http://config-server:1111/config-service/
+        uri: http://config-api:1111/config-api/
 logging:
   config: classpath:logback.xml
 
@@ -46,7 +46,7 @@ spring:
   profiles: qa
   cloud:
     config:
-      uri: http://10.52.180.29/config-service/
+      uri: http://10.52.180.29/config-api/
 logging:
   config: classpath:log/logback-qa.xml
 
@@ -56,7 +56,7 @@ spring:
   profiles: prod
   cloud:
     config:
-      uri: http://ae906e7b1818c11e7877b06314d28740-340622028.us-west-2.elb.amazonaws.com/config-service/
+      uri: http://ae906e7b1818c11e7877b06314d28740-340622028.us-west-2.elb.amazonaws.com/config-api/
 logging:
   config: classpath:log/logback-prod.xml
 
