@@ -16,17 +16,17 @@ spring:
   application:
     name: turbine-server
   profiles:
-    active: prod
+    active: local
   thymeleaf:
     enabled: false
 
 ---
 
 spring:
-  profiles: dev
+  profiles: local
   cloud:
     config:
-      uri: http://10.52.180.29/config-api/
+      uri: http://localhost:1111/config-api/
 logging:
   config: classpath:logback.xml
 
@@ -46,9 +46,9 @@ spring:
   profiles: qa
   cloud:
     config:
-      uri: http://10.52.180.29/config-api/
+      uri: http://10.52.180.42:1111/config-api/
 logging:
-  config: classpath:log/logback-qa.xml
+  config: classpath:logback-qa.xml
 
 ---
 
@@ -56,9 +56,10 @@ spring:
   profiles: prod
   cloud:
     config:
-      uri: http://ae906e7b1818c11e7877b06314d28740-340622028.us-west-2.elb.amazonaws.com/config-api/
+      uri: http://10.52.180.42:1111/config-api/
 logging:
-  config: classpath:log/logback-prod.xml
+  config: classpath:logback-prod.xml
 
 ---
+
 

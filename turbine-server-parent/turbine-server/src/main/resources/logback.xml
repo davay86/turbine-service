@@ -12,7 +12,7 @@ See here for more details: http://gordondickens.com/wordpress/2013/03/27/sawing-
 
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>${PID}: %-5level %logger{0} - %msg%n</pattern>
+            <pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} %logger : %msg%n</pattern>
         </encoder>
     </appender>
 
@@ -25,11 +25,15 @@ See here for more details: http://gordondickens.com/wordpress/2013/03/27/sawing-
     </appender>
 
     <!-- Specify logging levels -->
-    <logger name="org.springframework" level="warn"/>
-    <logger name="org.hibernate" level="warn"/>
+    <logger name="org.springframework" level="info"/>
+    <logger name="org.hibernate" level="error"/>
+    <logger name="org.apache" level="info"/>
+    <logger name="org.thymeleaf" level="error"/>
+    <logger name="com.netflix" level="error"/>
+    <logger name="springfox" level="error"/>
 
     <root level="info">
-        <appender-ref ref="console"/>
         <appender-ref ref="file"/>
+        <appender-ref ref="console"/>
     </root>
 </configuration>
