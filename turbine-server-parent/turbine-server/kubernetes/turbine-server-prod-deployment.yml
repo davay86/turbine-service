@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata: 
+    name: turbine-service
+spec:
+    replicas: 1
+    strategy:
+      type: RollingUpdate
+      rollingUpdate:
+        maxSurge: 1
+        maxUnavailable: 1
+    minReadySeconds: 5
+    template:
+        metadata:
+            labels:
+              app: turbine-service
+              tier: metrics
+        spec:
+            containers:
+            - name: turbine-service
+              image: sleepingtalent/turbine-service:1.0.10-SNAPSHOT
+              env:
+              - name: GIT_CONFIG_URL
+                value: https://github.com/BabcockEMTDevelopment/prod-configuration-properties
+              ports:
+              - containerPort: 1111
+
+
