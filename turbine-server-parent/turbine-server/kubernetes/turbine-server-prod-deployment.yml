@@ -18,7 +18,7 @@ spec:
         spec:
             containers:
             - name: turbine-service
-              image: sleepingtalent/turbine-service:1.0.11
+              image: sleepingtalent/turbine-service:1.0.12
               env:
               - name: GIT_CONFIG_URL
                 value: https://github.com/BabcockEMTDevelopment/prod-configuration-properties
