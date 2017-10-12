@@ -6,8 +6,8 @@ ENV JAVA_OPTS              ""
 ENV PATH                   $PATH:$JAVA_HOME/bin
 
 ENV SPRING_PROFILES_ACTIVE prod
-ENV SERVER_PORT 1111
-ENV GIT_CONFIG_URL https://github.com/BabcockEMTDevelopment/prod-configuration-properties
+ENV SERVER_PORT 1113
+ENV CONFIG_URL http://10.52.180.42:1111/config-api/
 
 WORKDIR /app
 
@@ -19,4 +19,4 @@ EXPOSE $SERVER_PORT
 
 ADD @executable.server.jar.name@.jar app.jar
 
-CMD ["/bin/sh", "-c", "java $JAVA_OPTS -jar app.jar --server.port=$SERVER_PORT --spring.profiles.active=$SPRING_PROFILES_ACTIVE  --spring.cloud.config.server.git.uri=$GIT_CONFIG_URL"]
+CMD ["/bin/sh", "-c", "java $JAVA_OPTS -jar app.jar --server.port=$SERVER_PORT --spring.profiles.active=$SPRING_PROFILES_ACTIVE  --spring.cloud.config.uri=$CONFIG_URL"]
