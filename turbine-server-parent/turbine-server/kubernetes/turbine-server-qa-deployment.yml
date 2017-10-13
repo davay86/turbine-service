@@ -18,11 +18,27 @@ spec:
         spec:
             containers:
             - name: turbine-service
-              image: sleepingtalent/turbine-service:1.0.13-RC
+              image: sleepingtalent/turbine-service:1.0.14-RC
               env:
               - name: GIT_CONFIG_URL
                 value: https://github.com/BabcockEMTDevelopment/qa-configuration-properties
               ports:
-              - containerPort: 1111
+              - containerPort: 1113
+
+---
+
+kind: Service
+metadata:
+    name: turbine-server-gateway
+    labels:
+        app: turbine-server
+        tier: metrics
+spec:
+    type: LoadBalancer
+    ports:
+    - port: 1113
+    selector:
+        app: turbine-server
+        tier: metrics
 
 
