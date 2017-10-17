@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata: 
-    name: turbine-service
+    name: turbine-server
 spec:
     replicas: 1
     strategy:
@@ -13,16 +13,32 @@ spec:
     template:
         metadata:
             labels:
-              app: turbine-service
+              app: turbine-server
               tier: metrics
         spec:
             containers:
-            - name: turbine-service
-              image: sleepingtalent/turbine-server:1.0.18
+            - name: turbine-server
+              image: sleepingtalent/turbine-server:1.0.19-SNAPSHOT
               env:
-              - name: GIT_CONFIG_URL
-                value: https://github.com/BabcockEMTDevelopment/prod-configuration-properties
+              - name: CONFIG_URL
+                value: http://config-api-gateway:1111/config-api/
               ports:
-              - containerPort: 1111
+              - containerPort: 1113
+
+---
+
+kind: Service
+metadata:
+    name: turbine-server-gateway
+    labels:
+        app: turbine-server
+        tier: metrics
+spec:
+    type: LoadBalancer
+    ports:
+    - port: 1113
+    selector:
+        app: turbine-server
+        tier: metrics
 
 
