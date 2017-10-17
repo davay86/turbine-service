@@ -18,7 +18,7 @@ spec:
         spec:
             containers:
             - name: turbine-server
-              image: sleepingtalent/turbine-server:1.0.16-SNAPSHOT-RC
+              image: sleepingtalent/turbine-server:1.0.17-RC
               env:
               - name: CONFIG_URL
                 value: http://a7248fd52b28911e798ab0a429a68c51-925490504.eu-west-1.elb.amazonaws.com:1111/config-api/
