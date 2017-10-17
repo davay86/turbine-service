@@ -18,7 +18,7 @@ spec:
         spec:
             containers:
             - name: turbine-server
-              image: sleepingtalent/turbine-server:1.0.19-SNAPSHOT
+              image: sleepingtalent/turbine-server:1.0.19
               env:
               - name: CONFIG_URL
                 value: http://config-api-gateway:1111/config-api/
