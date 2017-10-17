@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata: 
-    name: turbine-service
+    name: turbine-server
 spec:
     replicas: 1
     strategy:
@@ -13,15 +13,15 @@ spec:
     template:
         metadata:
             labels:
-              app: turbine-service
+              app: turbine-server
               tier: metrics
         spec:
             containers:
-            - name: turbine-service
+            - name: turbine-server
               image: sleepingtalent/turbine-service:@docker.release.version@-RC
               env:
-              - name: GIT_CONFIG_URL
-                value: https://github.com/BabcockEMTDevelopment/qa-configuration-properties
+              - name: CONFIG_URL
+                value: http://ae72c3afb915511e795a406fc096cf91-818673775.us-west-2.elb.amazonaws.com:1111/config-api/
               ports:
               - containerPort: 1113
 
