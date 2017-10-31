@@ -19,11 +19,26 @@ spec:
             containers:
             - name: turbine-server
               image: sleepingtalent/turbine-server:@docker.release.version@
+              readinessProbe:
+                httpGet:
+                  path: /health
+                  port: 1113
+                initialDelaySeconds: 120
+                timeoutSeconds: 60
+                periodSeconds: 15
+              livenessProbe:
+                httpGet:
+                  path: /health
+                  port: 1113
+                initialDelaySeconds: 120
+                timeoutSeconds: 60
+                periodSeconds: 15
               env:
               - name: CONFIG_URL
                 value: http://config-api-gateway:1111/config-api/
               ports:
               - containerPort: 1113
+              - containerPort: 8989
 
 ---
 
@@ -36,9 +51,14 @@ metadata:
 spec:
     type: LoadBalancer
     ports:
-    - port: 1113
+    - name: web
+      protocol: TCP
+      port: 1113
+      targetPort: 1113
+    - name: turbine-stream
+      protocol: TCP
+      port: 8989
+      targetPort: 8989
     selector:
         app: turbine-server
         tier: metrics
-
-
