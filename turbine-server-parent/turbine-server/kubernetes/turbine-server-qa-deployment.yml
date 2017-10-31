@@ -18,7 +18,21 @@ spec:
         spec:
             containers:
             - name: turbine-server
-              image: sleepingtalent/turbine-server:1.0.21-RC
+              image: sleepingtalent/turbine-server:1.0.22-RC
+              readinessProbe:
+                httpGet:
+                  path: /health
+                  port: 1113
+                initialDelaySeconds: 120
+                timeoutSeconds: 60
+                periodSeconds: 15
+              livenessProbe:
+                httpGet:
+                  path: /health
+                  port: 1113
+                initialDelaySeconds: 120
+                timeoutSeconds: 60
+                periodSeconds: 15
               env:
               - name: CONFIG_URL
                 value: http://config-api-gateway:1111/config-api/
