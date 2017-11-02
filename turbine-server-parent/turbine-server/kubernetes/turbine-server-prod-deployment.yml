@@ -18,7 +18,7 @@ spec:
         spec:
             containers:
             - name: turbine-server
-              image: sleepingtalent/turbine-server:1.0.22
+              image: sleepingtalent/turbine-server:1.0.23
               readinessProbe:
                 httpGet:
                   path: /health
