@@ -76,7 +76,7 @@
 								<configuration>
 									<images>
 										<image>
-											<name>sleepingtalent/turbine-server:${project.version}-RC</name>
+											<name>emtdevelopment/turbine-server:${project.version}-RC</name>
 											<build>
 												<dockerFileDir>${project.parent.basedir}/turbine-server/target/docker-dist</dockerFileDir>
 											</build>
@@ -96,7 +96,7 @@
 								<configuration>
 									<images>
 										<image>
-											<name>sleepingtalent/turbine-server:latest</name>
+											<name>emtdevelopment/turbine-server:latest</name>
 											<build>
 												<dockerFileDir>${project.parent.basedir}/turbine-server/target/docker-dist</dockerFileDir>
 											</build>
