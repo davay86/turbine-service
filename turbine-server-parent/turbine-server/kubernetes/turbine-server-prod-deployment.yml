@@ -18,7 +18,7 @@ spec:
         spec:
             containers:
             - name: turbine-server
-              image: emtdevelopment/turbine-server:1.0.30
+              image: emtdevelopment/turbine-server:1.0.31
               readinessProbe:
                 httpGet:
                   path: /health
